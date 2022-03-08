@@ -5,11 +5,14 @@ import App from "./App";
 import "style/color.css";
 import "style/reset.css";
 import reportWebVitals from "./reportWebVitals";
+import Store from "store/Store";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Store>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Store>,
   document.getElementById("root")
 );
 
