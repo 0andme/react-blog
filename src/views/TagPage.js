@@ -17,10 +17,11 @@ function TagPage() {
   }, [state.tag]);
   return (
     <Container>
-      <BackGround>
+      <Top>
         <Topheader />
         <TagTitle>{state.tag}</TagTitle>
-      </BackGround>
+      </Top>
+      <BackGround />
       <PostListStyle>
         {filteredList &&
           filteredList.length > 0 &&
@@ -37,16 +38,18 @@ function TagPage() {
     </Container>
   );
 }
+const Top = styled.div`
+  height: 200px;
+`;
 const BackGround = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--primaryRed);
-  height: 200px;
   padding-bottom: 100px;
 `;
 const TagTitle = styled.div`
   width: 100%;
-  flex: 1;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +64,7 @@ const PostListStyle = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-top: -100px;
+  margin: -100px auto;
 `;
 
 export default TagPage;

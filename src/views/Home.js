@@ -11,13 +11,14 @@ function Home() {
   const { allPostList } = useContext(PostData);
   return (
     <Container>
-      <BackGround>
+      <Top>
         <HeaderStyle>
           <h1>{blogTitle}</h1>
           <h5>{userGoal}</h5>
         </HeaderStyle>
         <NavBar />
-      </BackGround>
+      </Top>
+      <BackGround />
       <PostListStyle>
         {allPostList &&
           allPostList.length > 0 &&
@@ -34,9 +35,11 @@ function Home() {
     </Container>
   );
 }
+const Top = styled.div`
+  background-color: var(--primaryRed);
+`;
 const BackGround = styled.div`
   background-color: var(--primaryRed);
-  height: 200px;
   padding-bottom: 100px;
 `;
 const PostListStyle = styled.div`
@@ -47,7 +50,8 @@ const PostListStyle = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-top: -100px;
+  flex: 1;
+  margin: -100px auto;
 `;
 
 const HeaderStyle = styled.header`
@@ -61,6 +65,7 @@ const HeaderStyle = styled.header`
   color: var(--white);
   gap: 20px;
   box-sizing: border-box;
+  background-color: var(--primaryRed);
   h1 {
     font-weight: 700;
   }
