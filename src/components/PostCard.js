@@ -1,11 +1,19 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserData } from "store/User";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
 function PostCard({ isOdd, post }) {
   const { userImg, userName } = useContext(UserData);
+  const history = useNavigate();
   return (
-    <PostCardStyle $isOdd={isOdd} $isCover={post.cover}>
+    <PostCardStyle
+      onClick={() => {
+        history(`/post/${post.title.replace(" ", "")}-${post.date}`);
+      }}
+      $isOdd={isOdd}
+      $isCover={post.cover}
+    >
       {post.cover && (
         <img
           className="cover"
@@ -47,6 +55,7 @@ const PostCardStyle = styled.div`
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: var(--white);
+  cursor: pointer;
   ${(props) => {
     if (props.$isOdd) {
       if (props.$isCover) {
