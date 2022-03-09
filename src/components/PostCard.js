@@ -5,12 +5,14 @@ import { v1 as uuid } from "uuid";
 function PostCard({ post }) {
   const { userImg, userName } = useContext(UserData);
   return (
-    <PostCardStyle>
-      <img
-        className="cover"
-        src={require(`assets/postCovers/${post.cover}`)}
-        alt={post.title}
-      />
+    <PostCardStyle $isCover={post.cover}>
+      {post.cover && (
+        <img
+          className="cover"
+          src={require(`assets/postCovers/${post.cover}`)}
+          alt={post.title}
+        />
+      )}
       <div className="main">
         <div className="tags">
           {post.tags.map((tag) => {
@@ -51,10 +53,15 @@ const PostCardStyle = styled.div`
     }
     .main {
       display: flex;
+      width: ${(props) => {
+        if (props.$isCover) {
+          return "50%;";
+        } else {
+          return "100%;";
+        }
+      }};
       height: 100%;
-
       flex-direction: column;
-      width: 50%;
       .content {
         flex: 1;
       }
