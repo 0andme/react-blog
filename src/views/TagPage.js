@@ -19,7 +19,10 @@ function TagPage() {
     <Container>
       <Top>
         <Topheader />
-        <TagTitle>{state.tag}</TagTitle>
+        <TagTitle>
+          <h4>{state.tag}</h4>
+          <span className="num">{filteredList.length}개의 포스트</span>
+        </TagTitle>
       </Top>
       <BackGround />
       <PostListStyle>
@@ -39,7 +42,7 @@ function TagPage() {
   );
 }
 const Top = styled.div`
-  height: 200px;
+  height: 246px;
 `;
 const BackGround = styled.div`
   display: flex;
@@ -50,11 +53,19 @@ const BackGround = styled.div`
 const TagTitle = styled.div`
   width: 100%;
   height: 200px;
+  font-size: 1.8em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   background-color: var(--primaryRed);
+  color: var(--white);
+  .num {
+    margin-top: 10px;
+    font-size: 0.6em;
+    opacity: 0.8;
+  }
 `;
 const PostListStyle = styled.div`
   width: 100%;
