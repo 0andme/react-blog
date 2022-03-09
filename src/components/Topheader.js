@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { TagData } from "store/Tags";
+import { UserData } from "store/User";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
 
-function NavBar() {
+function Topheader() {
+  const { blogTitle } = useContext(UserData);
   const { tagList } = useContext(TagData);
   return (
     <NavBarStyle>
+      <NavLink className="title" to={"/"}>
+        {blogTitle}
+      </NavLink>
+
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/about"}>About</NavLink>
       {tagList.length > 0 &&
@@ -19,6 +25,7 @@ function NavBar() {
     </NavBarStyle>
   );
 }
+
 const NavBarStyle = styled.div`
   width: 100%;
   box-sizing: border-box;
@@ -38,4 +45,4 @@ const NavBarStyle = styled.div`
     opacity: 1;
   }
 `;
-export default NavBar;
+export default Topheader;
