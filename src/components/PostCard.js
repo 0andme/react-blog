@@ -9,7 +9,9 @@ function PostCard({ isOdd, post }) {
   return (
     <PostCardStyle
       onClick={() => {
-        history(`/post/${post.title.replace(" ", "")}-${post.date}`);
+        history(`/post/${post.title.replace(" ", "")}-${post.date}`, {
+          state: { post },
+        });
       }}
       $isOdd={isOdd}
       $isCover={post.cover}
