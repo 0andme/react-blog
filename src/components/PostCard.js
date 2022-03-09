@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { UserData } from "store/User";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
-function PostCard({ post }) {
+function PostCard({ isOdd, post }) {
   const { userImg, userName } = useContext(UserData);
   return (
-    <PostCardStyle $isCover={post.cover}>
+    <PostCardStyle $isOdd={isOdd} $isCover={post.cover}>
       {post.cover && (
         <img
           className="cover"
@@ -44,7 +44,10 @@ const PostCardStyle = styled.div`
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: var(--white);
-  &:first-child {
+  ${(props) => {
+    if (props.$isOdd) {
+      if (props.$isCover) {
+        return `&:first-child {
     width: 100%;
     max-width: calc(1040px);
     display: flex;
@@ -53,20 +56,36 @@ const PostCardStyle = styled.div`
     }
     .main {
       display: flex;
-      width: ${(props) => {
-        if (props.$isCover) {
-          return "50%;";
-        } else {
-          return "100%;";
-        }
-      }};
+      width: 50%;
       height: 100%;
       flex-direction: column;
       .content {
         flex: 1;
       }
     }
-  }
+  }`;
+      } else {
+        return `&:first-child {
+    width: 100%;
+    max-width: calc(1040px);
+    display: flex;
+    .cover {
+      width: 50%;
+    }
+    .main {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      .content {
+        flex: 1;
+      }
+    }
+  }`;
+      }
+    }
+  }}
+
   .cover {
     width: 100%;
     margin-bottom: 10px;
