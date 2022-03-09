@@ -1,12 +1,15 @@
 import React from "react";
+import Posts from "./Posts";
 import Tags from "./Tags";
 import User from "./User";
 
 function Store({ children }) {
   return (
-    <Tags>
-      <User>{children}</User>
-    </Tags>
+    <Posts>
+      <Tags>
+        <User>{children}</User>
+      </Tags>
+    </Posts>
   );
 }
 
