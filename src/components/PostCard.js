@@ -35,6 +35,9 @@ function PostCard({ isOdd, post }) {
   );
 }
 const PostCardStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: calc((100% - 20px) / 2);
   max-width: calc((1040px - 20px) / 2);
 
@@ -73,13 +76,9 @@ const PostCardStyle = styled.div`
       width: 50%;
     }
     .main {
-      display: flex;
       width: 100%;
       height: 100%;
-      flex-direction: column;
-      .content {
-        flex: 1;
-      }
+      
     }
   }`;
       }
@@ -104,7 +103,6 @@ const PostCardStyle = styled.div`
   .content {
     width: 100%;
     overflow: hidden;
-    height: 100%;
     text-overflow: ellipsis;
     opacity: 0.6;
     font-size: 0.8em;
