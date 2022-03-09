@@ -1,14 +1,14 @@
 import Container from "components/Container";
 import NavBar from "components/NavBar";
 import PostCard from "components/PostCard";
-import { postList } from "posts";
 import React, { useContext } from "react";
+import { PostData } from "store/Posts";
 import { UserData } from "store/User";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
 function Home() {
   const { blogTitle, userGoal } = useContext(UserData);
-
+  const { allPostList } = useContext(PostData);
   return (
     <Container>
       <BackGround>
@@ -19,15 +19,24 @@ function Home() {
         <NavBar />
       </BackGround>
       <PostListStyle>
-        {postList.map((post) => {
-          return <PostCard key={uuid()} post={post}></PostCard>;
-        })}
+        {allPostList &&
+          allPostList.length > 0 &&
+          allPostList.map((post) => {
+            return (
+              <PostCard
+                isOdd={allPostList.length % 2 === 0 ? false : true}
+                key={uuid()}
+                post={post}
+              ></PostCard>
+            );
+          })}
       </PostListStyle>
     </Container>
   );
 }
 const BackGround = styled.div`
   background-color: var(--primaryRed);
+  height: 200px;
   padding-bottom: 100px;
 `;
 const PostListStyle = styled.div`
