@@ -21,11 +21,13 @@ function NavBar() {
 }
 const NavBarStyle = styled.div`
   width: 100%;
+  max-width: calc(1040px);
   box-sizing: border-box;
   display: flex;
   align-items: center;
   padding: 20px 30px;
   gap: 20px;
+  margin: auto;
   background-color: var(--primaryRed);
   a {
     color: var(--white);
