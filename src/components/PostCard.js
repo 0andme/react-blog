@@ -54,6 +54,7 @@ const PostCardStyle = styled.div`
     width: 100%;
     max-width: calc(1040px);
     display: flex;
+    flex-direction:row;
     .cover {
       width: 50%;
     }
@@ -73,7 +74,7 @@ const PostCardStyle = styled.div`
     max-width: calc(1040px);
     display: flex;
     .cover {
-      width: 50%;
+      width: 0%;
     }
     .main {
       width: 100%;
