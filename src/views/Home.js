@@ -62,14 +62,15 @@ const HeaderStyle = styled.header`
   padding: 10% 0 5%;
 
   text-align: center;
-  color: var(--white);
   gap: 20px;
   box-sizing: border-box;
   background-color: var(--primaryRed);
   h1 {
+    color: var(--white);
     font-weight: 700;
   }
   h5 {
+    color: var(--white);
     opacity: 0.7;
   }
 `;
