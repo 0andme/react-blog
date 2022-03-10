@@ -126,6 +126,9 @@ q:after {
   content: "";
   content: none;
 }
+* {
+  color: var(--black);
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -146,6 +149,5 @@ h5 {
   font-size: 1rem;
 }
 a {
-  color: var(--black);
   text-decoration: none;
 }
